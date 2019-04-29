@@ -13,6 +13,9 @@ $(document).ready(function() {
 	var moreBtn = document.getElementById("know-more-button");
 	var moreCls = document.getElementById("more-close");
 	var more = document.getElementById("more");
+	var aboutBtn = document.getElementById("about-button");
+	var aboutCls = document.getElementById("about-close");
+	var about = document.getElementById("about");
 	var toolkit = document.getElementById("toolkit");
 
 	$(subBtn).on("click", function() {
@@ -42,7 +45,29 @@ $(document).ready(function() {
 		}
 	})
 	
-	$(more).mCustomScrollbar({
+	// about
+	$(about).mCustomScrollbar({
+		scrollInertia: 200
+	});
+
+	$(aboutBtn).on("click", function() {
+		$(overlay).addClass("on");
+		$(about).addClass("open");
+	});
+
+	$(aboutCls).on("click", function() {
+		$(about).removeClass("open");
+		$(overlay).removeClass("on");
+	});
+	
+	$(overlay).on("click", function() {
+		if($(about).hasClass("open")) {
+			$(about).removeClass("open");
+			$(overlay).removeClass("on");
+		}
+	})
+	
+	$(about).mCustomScrollbar({
 		scrollInertia: 200
 	});
 	
