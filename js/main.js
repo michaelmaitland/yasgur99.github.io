@@ -76,31 +76,18 @@ $(document).ready(function() {
 	});
 	
 	//Subscribe Form
-
-	$('#mc-form').on("submit", function(){
+	$("#mc-form").on("submit"), function(){
 		$(".response").addClass("active");
-	});
-
-	$("#mc-form").ajaxChimp({
-		url: mcUrl
-	});
-
-	//Countdown
-
-	if(countdown) {
-		$(".countdown").addClass("active");
-	}
-
-	$('#countdown').countdown({
-		date: configDate,
-		render: function(data) {
-			$(this.el).html(
-				"<div class=\"count-box\"><h2 class=\"countdown-num\">" + data.days + "</h2>" + " <h4 class=\"countdown-word\">days</h4></div>" +
-				"<div class=\"count-box\"><h2 class=\"countdown-num\">" + data.hours + "</h2>" + " <h4 class=\"countdown-word\">hours</h4></div>" +
-				"<div class=\"count-box\"><h2 class=\"countdown-num\">" + this.leadingZeros(data.min, 2) + "</h2>" + " <h4 class=\"countdown-word\">minutes</h4></div>" +
-				"<div class=\"count-box\"><h2 class=\"countdown-num\">" + this.leadingZeros(data.sec, 2) + "</h2>" + " <h4 class=\"countdown-word\">seconds</h4></div>");
-			}
+		$.ajax({
+		type: "POST",
+		url: "https://api.mer.gg/comingSoon",
+		data: {'email' : $('input[name=email]').val()},
+		success: function(){},
+		dataType: "json",
+		contentType : "application/json"
 		});
+	  };
+
 	
 	// Contact Form
 	var $contactForm = $('#contact-form');
@@ -116,17 +103,17 @@ $(document).ready(function() {
 			'user_email'    : $('input[name=email]').val(), 
 			'msg'           : $('textarea[name=message]').val()
 		};
-		$.post('contact_me.php', post_data, function(response){
+		// $.post('contact_me.php', post_data, function(response){
 
-			var output = response.text;
+		// 	var output = response.text;
 
-			$("#name").val('');
-			$("#email").val('');
-			$("#msg").val('');
+		// 	$("#name").val('');
+		// 	$("#email").val('');
+		// 	$("#msg").val('');
 
-			$("#contact-form #contact-result").addClass("submited");
-			$("#contact-form #contact-result").html(output);
-		}, 'json');
+		// 	$("#contact-form #contact-result").addClass("submited");
+		// 	$("#contact-form #contact-result").html(output);
+		// }, 'json');
 	});
 
 	// Particles
