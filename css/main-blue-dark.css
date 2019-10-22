@@ -159,6 +159,10 @@ body {
   font-weight: 100;
 }
 
+.heading .blue-g {
+  color: #0cd3ff;
+}
+
 @media (max-width: 1170px) {
   .heading {
     font-size: 32px;
@@ -774,11 +778,11 @@ body {
 
 /*About*/
 .about {
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
-  right: -50vw;
+  right: -100vw;
   z-index: 2;
   background: #262626;
   box-sizing: border-box;
@@ -833,8 +837,8 @@ body {
   font-size: 38px;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: .5em;
-  margin-top: 100px;
+  letter-spacing: .05em;
+  margin-top: 70px;
 }
 
 .about-heading .blue-g {
@@ -867,6 +871,16 @@ body {
 .about-description {
   margin: 0 auto;
   margin-top: 40px;
+  width: 70%;
+  font-family: Open Sans;
+  line-height: 2em;
+  letter-spacing: .07em;
+  text-align: center;
+  font-size: 14px;
+}
+
+.about-listitem {
+  margin: 0 auto;
   width: 70%;
   font-family: Open Sans;
   line-height: 2em;
