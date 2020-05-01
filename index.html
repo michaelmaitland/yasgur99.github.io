@@ -5,34 +5,73 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--Title-->
-	<title>Mergg | Coming Soon</title>
+	<title>Hover</title>
 	<!--CSS-->
-  <link rel="stylesheet" href="css/main-blue-dark.css" id="color-switcher">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- <link rel="stylesheet" href="css/main-blue-dark.css" id="color-switcher"> -->
+	<!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
 	<!--Favicon-->
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<!--Fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway|Righteous" rel="stylesheet">
+	<link href="css/stylez.css" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway|Righteous" rel="stylesheet"> -->
 </head>
 <body>
+	<div class="fade-overlay"> </div>
 	<!--Hero-->
-	<div class="hero" id="particles-js">
-		<div class="centered">
-			<img class="logo" src="img/logo.png" alt="PULSE">
-			<!-- <h1 class="title">Mergg</h1> -->
-			<h2 class="heading">Comin<span class="blue-g">g</span> Soo<span class="blue-g">n</span></h2>
-			<div class="buttons">
-				<a id="about-button" href="#" class="button btn-round btn-solid">About Mergg</a>
-				<!-- <a id="know-more-button" href="#" class="button btn-round btn-ghost">Contact Us</a>
-				<a id="subscribe-button" href="#" class="button btn-round btn-ghost">Subscribe</a> -->
-			</div>
+	<!-- <div class="hero" id="particles-js"> -->
+	<div class="app">
+		<div class="scrollbar" id="style-1">
+		  <div class="force-overflow"></div>
 		</div>
-		<div class="social-text">
+		<div class="logo-container">
+			<img class="logo" src="img/Hover.svg"/>
+			<p id="wide-header" style="color: #8c90a8;opacity: 0.5;">AVALIBLE NOW</p>
+		</div>
+		<div class="astro-container">
+			<img class="astro" src="img/Astro.svg"/>
+			<img class="astro-foreground" src="img/AstroForeground.svg"/>
+			<img class="astro-background" src="img/AstroBackground.svg"/>
+		</div>
+		<!-- <h1 class="title">Mergg</h1> -->
+		<!-- <div class="moveAble" style="position: absolute;"> -->
+		<!-- <h2 class="heading">Comin<span class="blue-g">g</span> Soo<span class="blue-g">n</span></h2> -->
+		<div class="downloads">
+			<div class="download appstore-download">
+				<a class="download-btn-round" id="appstore"><i class="fab fa-app-store"></i> Available on the App Store</a>
+				<div class="download-icons">
+					<img class="ios" src="img/IOSIcon.svg"/>
+				</div>
+			</div>
+			<div class="download desktop-download">
+				<a class="download-btn-round" id="desktop"> <i class="fas fa-desktop"></i> Download the Desktop App</a>
+				<div class="download-icons">
+					<div class="windows-mac">
+						<img class="windows" src="img/WindowsIcon.svg"/>
+						<img class="mac" src="img/MacIcon.svg"/>
+					</div>
+				</div>
+			</div>
+			<div class="download desktop-download">
+				<a class="download-btn-round" id="playstore"><i class="fab fa-google"></i> Available on the Play Store</a>
+				<div class="download-icons">
+					<img class="android" src="img/AndroidIcon.svg"/>
+				</div>
+			</div>
+			<!-- <a id="about-button" href="#" class="button btn-round btn-solid">About Mergg</a> -->
+			<!-- <a id="know-more-button" href="#" class="button btn-round btn-ghost">Contact Us</a>
+			<a id="subscribe-button" href="#" class="button btn-round btn-ghost">Subscribe</a> -->
+		</div>
+		<div class="download-info">
+			<p id="wide-header" style="color:white; font-size: 40px; margin-bottom: 0px; margin-top: 55px; letter-spacing: 5px;">DOWNLOAD ON ALL PLATFORMS</p>
+			<p id="header-subtext">Hover is now avalible for iOS, Mac, Windows and Android</p>
+		</div>
+		<!-- </div> -->
+		<!-- <div class="social-text">
 			<a href="https://twitter.com/mergg4">Twitter</a>
 			<a href="privacy_policy.html">Privacy Policy</a>
-		</div>
-		<div class="modal modal-subscirbe" id="subscribe-modal">
+		</div> -->
+		<!-- <div class="modal modal-subscirbe" id="subscribe-modal">
 			<div class="content">
 				<h2>Subscribe &amp; Stay Updated</h2>
 				<form id="mc-form" class="subscribe-form subscribe-split">
@@ -42,11 +81,23 @@
 				</form>
 			</div>
 			<div class="exit" id="subscribe-close">+</div>
-		</div>
+		</div> -->
 	</div>
-
+	<footer class="footer">
+		<div class="footer-btns">
+			<div class="about-us">
+				<a class="footer-btn">About Us</a>
+			</div>
+			<div class="twitter">
+				<a class="footer-btn">Twitter</a>
+			</div>
+			<div class="privacy-policy">
+				<a class="footer-btn">Privacy Policy</a>
+			</div>
+		</div>
+	</footer>
 	<!--About-->
-	<div class="about" id="about" data-mcs-theme="minimal-dark">
+	<!-- <div class="about" id="about" data-mcs-theme="minimal-dark">
 		<div class="exit" id="about-close">+</div>
 			<h1 class="about-heading">Mer<span class="blue-g">gg</span></h1>
 			<p class="about-heading"><span class="blue-g">L</span>et's Play</p>
@@ -85,10 +136,10 @@
 			<p class="about-listitem">Have questions, problems, or feedback? Reach out to us at support@mer.gg</p>
 			<p class="about-heading"></p>
 		</div>
-	</div>
+	</div> -->
 
 	<!--More-->
-	<div class="more" id="more" data-mcs-theme="minimal-dark">
+	<!-- <div class="more" id="more" data-mcs-theme="minimal-dark">
 		<div class="exit" id="more-close">+</div>
 		<h1 class="more-heading">Mer<span class="blue-g">gg</span></h1>
 		<p class="more-description">Where gamers can post freely</p>
@@ -132,16 +183,17 @@
 				<p>michael@mer.gg</p>
 			</li>
 		</ul>
-	</div>
+	</div> -->
 
 	<!--Overlay-->
-	<div class="overlay" id="overlay"></div>
+	<!-- <div class="overlay" id="overlay"></div> -->
 
 	<!--Scripts-->
 	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/jquery.mCustomScrollbar.min.js"></script>
-	<script src="js/config.js"></script>
-	<script src="js/particles.min.js"></script>
+	<!-- <script src="js/jquery.mCustomScrollbar.min.js"></script> -->
+	<!-- <script src="js/config.js"></script> -->
+	<script src="https://kit.fontawesome.com/f3547df771.js" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
+	<script src="js/spline.js"></script>
 </body>
 </html>
