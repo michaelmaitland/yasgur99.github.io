@@ -129,7 +129,7 @@ $(document).ready(function() {
 	function updateAstro() {
 		if((astro.x.toFixed(2) == astro.xd2.toFixed(2)) && reseting_astro) {
 			reseting_astro = false;
-			increaseIconOpacity(windows_mac_icon)
+			increaseIconOpacity($(".none"))
 			if(!(astro.x - 10 < astro_start_x && astro_start_x < astro.x + 10)) {
 				elapsed = 0;
 				start_pos = astro.x;
