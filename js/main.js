@@ -184,39 +184,23 @@ $(document).ready(function() {
 	var main_page = $(".main-page")
 
 	$(".about-us-link").click(function(){
-		page_overlay.fadeIn(200)
+		changePage();
 		about_us_page.delay(200).fadeIn(200);
-		main_page.css({"overflow":"hidden!important"})
-		setTimeout(function() {
-			moveAstroTo(desktop)
-		}, 200)
 	})
 
 	$(".privacy-policy-link").click(function(){
-		page_overlay.fadeIn(200)
+		changePage();
 		privacy_policy_page.delay(200).fadeIn(200);
-		main_page.css({"overflow":"hidden"})
-		setTimeout(function() {
-			moveAstroTo(desktop)
-		}, 200)
 	})
 
 	$(".tos-link").click(function(){
-		page_overlay.fadeIn(200)
+		changePage();
 		tos_page.delay(200).fadeIn(200);
-		main_page.css({"overflow":"hidden"})
-		setTimeout(function() {
-			moveAstroTo(desktop)
-		}, 200)
 	})
 
 	$(".data-policy-link").click(function(){
-		page_overlay.fadeIn(200)
+		changePage();
 		data_policy_page.delay(200).fadeIn(200);
-		main_page.css({"overflow":"hidden"})
-		setTimeout(function() {
-			moveAstroTo(desktop)
-		}, 200)
 	})
 
 	$(".back-to-downloads").click(function(){
@@ -225,9 +209,19 @@ $(document).ready(function() {
 		tos_page.fadeOut(200);
 		data_policy_page.fadeOut(200);
 		page_overlay.delay(200).fadeOut(200)
-		moveAstroTo(desktop)
-		increaseIconOpacity(windows_mac_icon)
+		setTimeout(function() {
+			main_page.css({"position":"relative"})
+			increaseIconOpacity($(".none"))
+		}, 200)
 		$(this).scrollTop(0);
 	})
+
+	function changePage() {
+		page_overlay.fadeIn(200)
+		setTimeout(function() {
+			main_page.css({"position":"fixed"})
+			moveAstroTo(desktop)
+		}, 200)
+	}
 
 });
