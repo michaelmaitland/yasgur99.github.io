@@ -1,10 +1,6 @@
-// 'use strict';
-
-// import * as Spline from 'spline.js'
 $(document).ready(function() {
+	var page_overlay = $(".fade-overlay");
 
-	$(".fade-overlay").fadeOut(500)
-	// var $astro = $('.astro');
 	var appstore = document.getElementById("appstore");
 	var desktop = document.getElementById("desktop");
 	var playstore = document.getElementById("playstore");
@@ -13,16 +9,16 @@ $(document).ready(function() {
 	var windows_mac_icon = $(".windows-mac")
 	var android_icon = $(".android")
 
+	var hover_inactive = false;
+
 	$(appstore).hover(function() {
 		moveAstroTo(appstore)
 		increaseIconOpacity(ios_icon)
 	});
-
 	$(desktop).hover(function() {
 		moveAstroTo(desktop)
 		increaseIconOpacity(windows_mac_icon)
 	});
-
 	$(playstore).hover(function() {
 		moveAstroTo(playstore)
 		increaseIconOpacity(android_icon)
@@ -32,6 +28,8 @@ $(document).ready(function() {
 		ios_icon.css({"opacity": 0.1})
 		windows_mac_icon.css({"opacity": 0.1})
 		android_icon.css({"opacity": 0.1})
+		// Glow test
+		// element.css({"opacity": 1, "-webkit-filter": "drop-shadow( 0px 0px 10px rgba(12, 211, 255, 1))"})
 		element.css({"opacity": 1})
 	}
 
@@ -43,11 +41,12 @@ $(document).ready(function() {
 	var header_start_y = $('.logo-container').position()["top"] - $('.logo-container').height() / 4
 
 	window.addEventListener("resize", updateWindowSize);
-	const xs = [0, 0.347, 0.608, 0.89, 1];
-	// const xs = [0, 0.325, 0.608, 0.9, 1];
+	// const xs = [0, 0.347, 0.608, 0.89, 1];
+	const xs = [0, 0.225, 0.608, 0.9, 1];
 	const ys = [0, 0.937, 0.905, 0.9, 0.90];
 
 	const spline = new Spline(xs, ys);
+
 
 
 	function updateWindowSize() {
@@ -57,21 +56,26 @@ $(document).ready(function() {
 		astro_start_y = $('.astro').position()["top"];
 		setTimeout( function() {
 			astro.reset();
-		}, 750)
+		}, 300)
 	}
 
 	var astro_offset = -50
-
+	var astro_start_offset = 50
 	var target_x = astro_start_x;
 
 	var reseting_astro = false;
+
 
 	var astro = {
 	  a:$('.astro'),
 		fore:$('.astro-foreground'),
 		back:$('.astro-background'),
-	  x: astro_start_x, xd1: astro_start_x, xd2: astro_start_x,
-	 	y: astro_start_y, yd1: astro_start_y, yd2: astro_start_y,
+	  x  : astro_start_x + astro_start_offset,
+		xd1: astro_start_x + astro_start_offset*1.5,
+		xd2: astro_start_x + astro_start_offset*2,
+	 	y  : astro_start_y,
+		yd1: astro_start_y,
+		yd2: astro_start_y,
 		reset: function(){
 			if(reseting_astro) return;
 			start_pos = astro.x;
@@ -94,20 +98,26 @@ $(document).ready(function() {
 	  }
 	}
 
-
 	var frame_rate = 144;
-	var duration = 1.1;
+	var duration = 1.25;
 	var elapsed = 1;
 	var t;
 
 	var start_pos = astro_start_x;
 
 	var updateInterval = setInterval(updateElements, 1000/frame_rate)
-	// updateElements();
 
 	function updateElements() {
 		updateAstro();
 		updateHeader();
+		updateButtons();
+	}
+
+	function updateButtons() {
+		if(!$(appstore).is(":hover") && (!$(desktop).is(":hover") && !$(playstore).is(":hover")) && !hover_inactive) {
+			increaseIconOpacity($(".none"))
+			hover_inactive = true;
+		}
 	}
 
 	function updateHeader() {
@@ -117,13 +127,18 @@ $(document).ready(function() {
 	}
 
 	function updateAstro() {
-		elapsed += 0.01 ;
-		t = elapsed / (duration / frame_rate * frame_rate * duration);
-		if(t > 1) t = 1;
 		if((astro.x.toFixed(2) == astro.xd2.toFixed(2)) && reseting_astro) {
 			reseting_astro = false;
 			increaseIconOpacity(windows_mac_icon)
+			if(!(astro.x - 10 < astro_start_x && astro_start_x < astro.x + 10)) {
+				elapsed = 0;
+				start_pos = astro.x;
+				target_x = astro_start_x;
+			}
 		}
+		elapsed += 0.01 ;
+		t = elapsed / (duration / frame_rate * frame_rate * duration);
+		if(t > 1) t = 1;
 		astro.x = overshoot(start_pos, target_x, t);
 
 		// astro.x = lerp(astro.x, target_x, 0.1);
@@ -137,6 +152,7 @@ $(document).ready(function() {
 	}
 
 	function moveAstroTo(element) {
+		hover_inactive = false;
 		elapsed = 0;
 		start_pos = astro.x;
 		if(w_win >= 860) {
@@ -158,4 +174,60 @@ $(document).ready(function() {
 	// INIT
 	moveAstroTo(desktop)
 	increaseIconOpacity(windows_mac_icon)
+	$(this).scrollTop(0);
+	page_overlay.fadeOut(500)
+
+	var about_us_page = $(".about-us-page")
+	var privacy_policy_page = $(".privacy-policy-page")
+	var tos_page = $(".tos-page")
+	var data_policy_page = $(".data-policy-page")
+	var main_page = $(".main-page")
+
+	$(".about-us-link").click(function(){
+		page_overlay.fadeIn(200)
+		about_us_page.delay(200).fadeIn(200);
+		main_page.css({"overflow":"hidden!important"})
+		setTimeout(function() {
+			moveAstroTo(desktop)
+		}, 200)
+	})
+
+	$(".privacy-policy-link").click(function(){
+		page_overlay.fadeIn(200)
+		privacy_policy_page.delay(200).fadeIn(200);
+		main_page.css({"overflow":"hidden"})
+		setTimeout(function() {
+			moveAstroTo(desktop)
+		}, 200)
+	})
+
+	$(".tos-link").click(function(){
+		page_overlay.fadeIn(200)
+		tos_page.delay(200).fadeIn(200);
+		main_page.css({"overflow":"hidden"})
+		setTimeout(function() {
+			moveAstroTo(desktop)
+		}, 200)
+	})
+
+	$(".data-policy-link").click(function(){
+		page_overlay.fadeIn(200)
+		data_policy_page.delay(200).fadeIn(200);
+		main_page.css({"overflow":"hidden"})
+		setTimeout(function() {
+			moveAstroTo(desktop)
+		}, 200)
+	})
+
+	$(".back-to-downloads").click(function(){
+		about_us_page.fadeOut(200);
+		privacy_policy_page.fadeOut(200);
+		tos_page.fadeOut(200);
+		data_policy_page.fadeOut(200);
+		page_overlay.delay(200).fadeOut(200)
+		moveAstroTo(desktop)
+		increaseIconOpacity(windows_mac_icon)
+		$(this).scrollTop(0);
+	})
+
 });
